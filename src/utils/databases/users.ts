@@ -60,5 +60,9 @@ module.exports = {
 
     async getUserById(id: string) {
         return await User.findOne({ id: id });
+    },
+
+    async updateUser(id, { username, coins, progress, trophies }: any) {
+        return await User.findOneAndUpdate({ id: id }, { username, coins, progress, trophies });
     }
 }
