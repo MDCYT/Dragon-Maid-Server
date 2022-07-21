@@ -7,9 +7,8 @@ if (!process.env.MONGODB_URL) throw new Error("MONGODB_URL is not defined");
 mongoose.connect(process.env.MONGODB_URL).then(() => {
         console.log("Connected to MongoDB");
     })
-    .catch((err) => {
+    .catch(() => {
         console.error("Error connecting to MongoDB");
-        console.error(err);
     });
 
 
