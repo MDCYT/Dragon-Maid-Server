@@ -27,23 +27,29 @@ routes.forEach(route => {
 app.post("/api/v1/user", async (req, res) => {
   const { username, id } = req.body
 
-  //Make a new collection in the database
-  const User = mongoose.model("User", {
-    name: String,
-    id: String
-  });
+  //Make a new model
+  const User = mongoose.model(
+    "Users",
+    new mongoose.Schema({
+      username: String,
+      id: String
+    })
+  );
 
-  //Create a new user
-  const user = new User({
-    name: username,
+
+  //Save the new collection in the database
+  const user = await User.create({
+    username: username,
     id: id
   });
 
-  //Save the user
-  await user.save();
+  user.save().then(() => {
+    res.send(user);
+  }
+  ).catch(err => {
+    res.send(err);
+  })
 
-  //Return the user
-  res.json(user);
 });
 
 app.listen(port, () => {
