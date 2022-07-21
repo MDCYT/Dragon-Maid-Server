@@ -7,7 +7,7 @@ let routes: Array<{ route: Router }> = [];
 const readRoutes = (path: string): Array<{}> => {
     const files = fs.readdirSync(path);
     const filesRoutes = files.map(file => {
-        if (file.indexOf('.routes.ts') > -1) {
+        if (file.endsWith('.routes.ts') || file.endsWith('.routes.js')) {
             const route = require(join(path, file));
             routes.push({
                 route: route.default

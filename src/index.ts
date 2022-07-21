@@ -10,7 +10,6 @@ app.use(express.raw({ type: "application/vnd.custom-type" }));
 app.use(express.text({ type: "text/html" }));
 
 routes.forEach(route => {
-  console.log(route);
   app.use("/", route.route);
 })
 
