@@ -63,6 +63,6 @@ module.exports = {
     },
 
     async updateUser(id:string, { username, coins, progress, trophies }: { username: string, coins: number, progress: number, trophies: any[] }) {
-        return await User.findOneAndUpdate({ id: id }, { username, coins, progress, trophies });
+        return await User.findOneAndUpdate({ id: id }, { username, coins, progress, trophies, updatedAt: Date.now() });
     }
 }
