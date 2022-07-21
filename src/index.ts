@@ -8,8 +8,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.raw({ type: "application/vnd.custom-type" }));
 app.use(bodyParser.text({ type: "text/html" }));
 
-app.get("/", async (req, res) => {
-  res.json({ Hello: "World" });
+app.post("/api/v1/user", async (req, res) => {
+  const data = req.body
+  console.log({data})
+  res.sendStatus(200)
 });
 
 app.listen(port, () => {
