@@ -28,4 +28,14 @@ router.get('/api/v1/user/:id', async (req, res) => {
     res.json(user)
 })
 
+router.post('/api/v1/user/username/:id', async (req, res) => {
+    const { id } = req.params
+    const { username } = req.body
+
+    await users.updateUserName(id, username)
+
+    res.send('User updated')
+    
+})
+
 export default router;
