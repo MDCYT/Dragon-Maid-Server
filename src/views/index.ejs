@@ -1,0 +1,19 @@
+
+<%- include ('partials/header.ejs') %>
+
+<body>
+    
+    <h1 class="text-center"><%= title %></h1>
+
+    <div class="container mx-auto pt-5">
+        <% data.forEach(function(item) { %>
+            <div class="container text-center">
+                <h2 class="text-2xl text-red-700"><%= item.username %></h2>
+                <p class="text-xl text-blue-800"><%= item.coins %></p>
+            </div>
+        <% }); %>
+    </div>
+
+    
+</body>
+</html>

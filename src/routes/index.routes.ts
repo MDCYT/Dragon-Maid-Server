@@ -7,7 +7,15 @@ router.get('/', async (req, res) => {
         return response.data
     }).catch((e) => console.log(e))
 
-    res.json(data)
+    res.render('index', {
+        meta:{
+            title: 'Leaderboard',
+            description: 'The leaderboard of the game',
+            keywords: 'leaderboard, game, top, top 10'
+        },
+        title: 'Leaderboard',
+        data: data
+    })
 })
 
 export default router;
