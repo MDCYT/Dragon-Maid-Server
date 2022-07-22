@@ -1,13 +1,17 @@
 {
   "compilerOptions": {
     "outDir": "dist",
-
+    "rootDir": "src",
     "incremental": true,
     "target": "es6",
     "module": "CommonJS",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  }
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true
+  },
+  "include": [
+    "src/**/*"
+  ]
 }

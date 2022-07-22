@@ -1,4 +1,5 @@
 import express from "express";
+// tslint:disable-next-line: no-var-requires
 if (process.env.NODE_ENV !== "production") require("dotenv").config();
 import routes from "./routes/router";
 import morgan from "morgan"
@@ -13,7 +14,7 @@ app.use(express.text({ type: "text/html" }));
 app.use(express.urlencoded({ extended: true }));
 app.set('views', join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-//Public files
+// Public files
 app.use(express.static(join(__dirname, "public")));
 
 app.set("json spaces", 2)
@@ -32,5 +33,6 @@ routes.forEach(route => {
 })
 
 app.listen(port, () => {
+  // tslint:disable-next-line: no-console
   console.log(`Example app listening at http://localhost:${port}`);
 });
