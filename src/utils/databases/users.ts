@@ -76,5 +76,10 @@ module.exports = {
 
     async updateUserCoins(id:string, coins: number) {
         return await User.findOneAndUpdate({ id: id }, { coins, updatedAt: Date.now() });
+    },
+
+    async getLeaderboard(limit: number) {
+        //Only get the username, coins, progress, trophies, and avatar without the _id, get the top 10 users with the most coins, with limit
+        return await User.find({}, { username: 1, coins: 1, progress: 1, trophies: 1, avatar: 1, _id: 0 }).sort({ coins: -1 }).limit(limit);
     }
 }

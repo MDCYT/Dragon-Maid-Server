@@ -8,6 +8,7 @@ const port = process.env.PORT || 3333;
 app.use(express.json());
 app.use(express.raw({ type: "application/vnd.custom-type" }));
 app.use(express.text({ type: "text/html" }));
+app.set("json spaces", 2)
 
 routes.forEach(route => {
   app.use("/", route.route);
