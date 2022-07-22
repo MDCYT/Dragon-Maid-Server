@@ -72,5 +72,9 @@ module.exports = {
 
     async updateUserProgress(id:string, progress: number) {
         return await User.findOneAndUpdate({ id: id }, { progress, updatedAt: Date.now() });
+    },
+
+    async updateUserCoins(id:string, coins: number) {
+        return await User.findOneAndUpdate({ id: id }, { coins, updatedAt: Date.now() });
     }
 }
