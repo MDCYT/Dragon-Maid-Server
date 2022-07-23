@@ -3,7 +3,8 @@ const router = Router();
 import axios from "axios";
 
 router.get('/', async (req, res) => {
-    const limit = req.query.limit || 10;
+    let limit = req.query.limit || 10;
+    if(limit > 100) limit = 100;
     const page = req.query.page || 1;
     const data = await axios.get(req.protocol + "://" + req.get('host') + "/api/v1/leaderboard?limit=" + limit + "&page=" + page).then(response => {
         return response.data

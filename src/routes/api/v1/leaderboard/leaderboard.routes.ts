@@ -33,7 +33,7 @@ router.get('/api/v1/leaderboard', async (req, res) => {
             progress: leaderboard[i].progress,
             trophies: leaderboard[i].trophies,
             avatar: leaderboard[i].avatar,
-            rank: i + 1,
+            rank: (Number(page) - 1) * Number(limit) + i + 1,
         });
     }
     res.json(newLeaderboard);
