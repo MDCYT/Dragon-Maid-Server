@@ -20,7 +20,7 @@ app.use(express.static(join(__dirname, "public")));
 app.set("json spaces", 2)
 app.use(morgan('dev'))
 
-app.use((req, res, next) => {
+app.use((_req, res, next) => {
     res.setHeader("X-Powered-By", "MDCDEV youtube.com/c/MDCPE")
     res.setHeader("X-Frame-Options", "DENY");
     res.setHeader("X-UA-Compatible", "IE=edge");
@@ -34,5 +34,5 @@ routes.forEach(route => {
 
 app.listen(port, () => {
   // tslint:disable-next-line: no-console
-  console.log(`Example app listening at http://localhost:${port}`);
-});
+  console.log(`Server running on port ${port}`);
+})

@@ -1,19 +1,45 @@
 
 <%- include ('partials/header.ejs') %>
 
-<body>
-    
-    <h1 class="text-center"><%= title %></h1>
+<body class="background-maid-dragon">
 
-    <div class="container mx-auto pt-5">
-        <% data.forEach(function(item) { %>
-            <div class="container text-center">
-                <h2 class="text-2xl text-red-700"><%= item.username %></h2>
-                <p class="text-xl text-blue-800"><%= item.coins %></p>
+    <!--Logo here-->
+    <div>
+        <div class="row mt-4">
+            <div class="col-md-12 justify-center flex">
+                <div class="logo">
+                    <img src="img/logo.png" alt="logo">
+                </div>
             </div>
-        <% }); %>
+
+            <!-- Leaderboard logo with space -->
+            <div class="col-md-12 mt-1 flex justify-center">
+                <div class="logo">
+                    <img src="img/world ranking.png" alt="logo">
+                </div>
+            </div>
+        </div>
     </div>
 
+    <div class="justify-center flex mt-4">
+
+
+        <!-- Separate line -->
+        <div class="bg-white font-black w-4/5 text-center rounded-3xl p-4">
+            <div class="row flex justify-between  pb-2">
+                <h2 class="font-black">Username</h2>
+                <h2 class="font-black">Coins</h2>
+            </div>
+            <hr class="mb-2">
+
+            <% data.forEach(user => { %>
+                <div class="row flex justify-between my-2">
+                    <p class="text-xl"><%= user.rank %>. <%= user.username %></p>
+                    <p><%= user.coins %></p>
+                </div>
+            <% }) %> 
+        </div>
     
+    </div>
 </body>
 </html>

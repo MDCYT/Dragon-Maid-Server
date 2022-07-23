@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const User = mongoose.model(
-    "User", 
+    "User",
     new mongoose.Schema({
         username: {
             type: String,
@@ -59,27 +59,28 @@ module.exports = {
     },
 
     async getUserById(id: string) {
-        return await User.findOne({ id: id });
+        return await User.findOne({ id });
     },
 
     async updateUser(id:string, { username, coins, progress, trophies }: { username: string, coins: number, progress: number, trophies: any[] }) {
-        return await User.findOneAndUpdate({ id: id }, { username, coins, progress, trophies, updatedAt: Date.now() });
+        return await User.findOneAndUpdate({ id }, { username, coins, progress, trophies, updatedAt: Date.now() });
     },
 
     async updateUserName(id:string, username: string) {
-        return await User.findOneAndUpdate({ id: id }, { username, updatedAt: Date.now() });
+        return await User.findOneAndUpdate({ id }, { username, updatedAt: Date.now() });
     },
 
     async updateUserProgress(id:string, progress: number) {
-        return await User.findOneAndUpdate({ id: id }, { progress, updatedAt: Date.now() });
+        return await User.findOneAndUpdate({ id }, { progress, updatedAt: Date.now() });
     },
 
     async updateUserCoins(id:string, coins: number) {
-        return await User.findOneAndUpdate({ id: id }, { coins, updatedAt: Date.now() });
+        return await User.findOneAndUpdate({ id }, { coins, updatedAt: Date.now() });
     },
 
-    async getLeaderboard(limit: number) {
-        //Only get the username, coins, progress, trophies, and avatar without the _id, get the top 10 users with the most coins, with limit
-        return await User.find({}, { username: 1, coins: 1, progress: 1, trophies: 1, avatar: 1, _id: 0 }).sort({ coins: -1 }).limit(limit);
+    async getLeaderboard(limit: number, page: number) {
+        // Only get the username, coins, progress, trophies, and avatar without the _id, get the top 10 users with the most coins, with limit
+
+        return await User.find({}, { username: 1, coins: 1, progress: 1, trophies: 1, avatar: 1, _id: 0 }).sort({ coins: -1 }).skip((page - 1) * limit).limit(limit);
     }
 }

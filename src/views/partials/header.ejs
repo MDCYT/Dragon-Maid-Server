@@ -8,5 +8,16 @@
     <% if (meta.keywords) { %>
         <meta name="keywords" content="<%= meta.keywords %>">
     <% } %>
+    <meta name="language" content="EN">
+    <meta name="robots" content="index, follow">
+    <meta name="og:title" content="<%= meta.title %>">
+    <meta name="og:description" content="<%= meta.description %>">
+    <meta name="og:type" content="website">
+    <link rel="apple-touch-icon" sizes="180x180" href="/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/logo.png">
     <link rel="stylesheet" href="/css/style.css">
+    <% if(meta.css) { %>
+        <link rel="stylesheet" href="/css/<%= meta.css %>">
+    <% } %>
 </head>
