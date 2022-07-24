@@ -42,15 +42,32 @@
                     <!-- Separate line -->
                     <div class="bg-white font-black  text-center rounded-3xl p-4">
                         <div class="row flex justify-between  pb-2">
-                            <h2 class="font-black">Username</h2>
-                            <h2 class="font-black">Coins</h2>
+                            <h2>Username</h2>
+                            <h2>Coins</h2>
                         </div>
                         <hr class="mb-2">
         
                         <% data.forEach(user => { %>
                         <div class="row flex justify-between my-2">
-                            <p class="text-xl"><%= user.rank %>. <%= user.username %></p>
-                            <p><%= user.coins %></p>
+                            <div class="col-md-6 row justify-between flex align-middle items-center">
+                                <p class="text-xl"><% if(user.rank === 1) { %>
+                                    <p class="text-white leading-7 bg-yellow-400 w-8 h-8 rounded-full">1.</p>
+                                <% } else if(user.rank === 2) { %>
+                                    <p class="text-white leading-7 bg-gray-600 w-8 h-8 rounded-full">2.</p>
+                                <% } else if(user.rank === 3) { %>
+                                    <p class="text-white leading-7 bg-orange-700 w-8 h-8 rounded-full">3.</p>
+                                <% } else { %>
+                                    <p class="text-black"><%= user.rank %>.</p>
+                                <% } %>
+                                &nbsp;<%= user.username %></p>
+                            </p>
+                                <!--White space-->
+                                <p class="text-xl">&nbsp;</p>
+                                <img src="<%= user.avatar %>" alt="avatar" class="rounded-full w-8">
+                            </div>
+                            <div>
+                                <p><%= user.coins %></p>
+                            </div>
                         </div>
                         <% }) %>
                     </div>
@@ -62,7 +79,7 @@
                         <form id="search-form">
                             <input id="search-input"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block p-2.5 mx-3 text-center"
-                            type="text" placeholder="Page number">
+                            type="text" placeholder="Page">
                         </form>
                         <a class="bg-lime-400 hover:bg-lime-600 hover:text-white font-bold py-1 px-4 rounded text-xl duration-300 text-black"
                             href="/?page=<%= page + 1 %>&limit=<%= limit %>">Next</a>

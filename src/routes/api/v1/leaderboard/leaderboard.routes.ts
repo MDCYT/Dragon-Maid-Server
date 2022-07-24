@@ -5,6 +5,7 @@ const { users } = require('../../../../utils/db');
 const router = Router();
 
 router.get('/api/v1/leaderboard', async (req, res) => {
+
     const limit = req.query.limit || 10;
     const page = req.query.page || 1;
 
@@ -27,15 +28,41 @@ router.get('/api/v1/leaderboard', async (req, res) => {
             }
         }
 
+        const rank = (Number(page) - 1) * Number(limit) + i + 1;
+
+        // Bitfield to get flags of the user
+        // 1 - First place
+        // 2 - Second place
+        // 4 - Third place
+
+        let flags = 0;
+        switch (rank) {
+            case 1:
+                flags = 1;
+                break;
+            case 2:
+                flags = 2;
+                break;
+            case 3:
+                flags = 4;
+                break;
+            default:
+                break;
+        }
+
+
+
         newLeaderboard.push({
             username: leaderboard[i].username,
             coins: leaderboard[i].coins,
             progress: leaderboard[i].progress,
             trophies: leaderboard[i].trophies,
             avatar: leaderboard[i].avatar,
-            rank: (Number(page) - 1) * Number(limit) + i + 1,
+            rank,
+            flags
         });
     }
+
     res.json(newLeaderboard);
 });
 
