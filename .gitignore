@@ -34,3 +34,6 @@ dist/
 src/private
 postcss.config.js
 tailwind.config.js
+
+#typescript development
+tsconfig.tsbuildinfo

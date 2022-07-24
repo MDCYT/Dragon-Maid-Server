@@ -62,19 +62,19 @@ module.exports = {
         return await User.findOne({ id });
     },
 
-    async updateUser(id:string, { username, coins, progress, trophies }: { username: string, coins: number, progress: number, trophies: any[] }) {
+    async updateUser(id: string, { username, coins, progress, trophies }: { username: string, coins: number, progress: number, trophies: any[] }) {
         return await User.findOneAndUpdate({ id }, { username, coins, progress, trophies, updatedAt: Date.now() });
     },
 
-    async updateUserName(id:string, username: string) {
+    async updateUserName(id: string, username: string) {
         return await User.findOneAndUpdate({ id }, { username, updatedAt: Date.now() });
     },
 
-    async updateUserProgress(id:string, progress: number) {
+    async updateUserProgress(id: string, progress: number) {
         return await User.findOneAndUpdate({ id }, { progress, updatedAt: Date.now() });
     },
 
-    async updateUserCoins(id:string, coins: number) {
+    async updateUserCoins(id: string, coins: number) {
         return await User.findOneAndUpdate({ id }, { coins, updatedAt: Date.now() });
     },
 

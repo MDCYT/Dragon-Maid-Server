@@ -1,4 +1,5 @@
 import { Router } from 'express';
+// tslint:disable-next-line: no-var-requires
 const { users } = require('../../../../utils/db');
 
 const router = Router();

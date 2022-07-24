@@ -2,9 +2,9 @@ import fs from 'fs';
 import { join } from 'path';
 import { Router } from 'express';
 
-let routes: Array<{ route: Router }> = [];
+const routes: { route: Router }[] = [];
 
-const readRoutes = (path: string): Array<{}> => {
+const readRoutes = (path: string): {}[] => {
     const files = fs.readdirSync(path);
     const filesRoutes = files.map(file => {
         if (file.endsWith('.routes.ts') || file.endsWith('.routes.js')) {

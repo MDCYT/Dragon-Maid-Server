@@ -21,15 +21,20 @@ app.set("json spaces", 2)
 app.use(morgan('dev'))
 
 app.use((_req, res, next) => {
-    res.setHeader("X-Powered-By", "MDCDEV youtube.com/c/MDCPE")
-    res.setHeader("X-Frame-Options", "DENY");
-    res.setHeader("X-UA-Compatible", "IE=edge");
-    res.setHeader("server", "MDCDEV");
-    next();
+  res.setHeader("X-Powered-By", "MDCDEV youtube.com/c/MDCPE")
+  res.setHeader("X-Frame-Options", "DENY");
+  res.setHeader("X-UA-Compatible", "IE=edge");
+  res.setHeader("server", "MDCDEV");
+  next();
 })
 
 routes.forEach(route => {
   app.use("/", route.route);
+})
+
+// Error 404 handler
+app.use((req, res, next) => {
+  res.redirect("/404");
 })
 
 app.listen(port, () => {
