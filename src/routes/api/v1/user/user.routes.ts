@@ -14,9 +14,9 @@ router.post('/api/v1/user', (req, res) => {
 
 router.post('/api/v1/user/update/:id', (req, res) => {
     const { id } = req.params
-    const { username, coins, progress, trophies } = req.body
+    const { username, coins, progress, trophies, avatar } = req.body
 
-    users.updateUser(id, { username, coins, progress, trophies })
+    users.updateUser(id, { username, coins, progress, trophies, avatar })
 
     res.send('User updated')
 })
