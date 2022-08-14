@@ -5,9 +5,9 @@ const { users } = require('../../../../utils/db');
 const router = Router();
 
 router.post('/api/v1/user', (req, res) => {
-    const { username, id, coins, progress, trophies } = req.body
+    const { username, id, coins, progress, trophies, avatar } = req.body
 
-    users.createUser({ username, id, coins, progress, trophies })
+    users.createUser({ username, id, coins, progress, trophies, avatar})
 
     res.send('User created')
 })

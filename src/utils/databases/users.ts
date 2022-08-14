@@ -47,13 +47,14 @@ const User = mongoose.model(
 );
 
 module.exports = {
-    async createUser({ username, id, coins, progress, trophies }: any) {
+    async createUser({ username, id, coins, progress, trophies, avatar }: any) {
         const user = new User({
             username,
             id,
             coins,
             progress,
             trophies,
+            avatar,
         });
         return await user.save();
     },
