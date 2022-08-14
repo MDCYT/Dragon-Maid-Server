@@ -20,6 +20,21 @@
         </div>
     </div>
 
+    <div class="justify-center flex mt-4 mb-8 text-2xl font-black">
+        <div class="w-4/5">
+            <div class="flex justify-between mt-1 mb-1 space-x-4">
+                <a href="/">
+                    <div class="col-md-12 flex bg-lime-300 rounded-3xl p-2 px-8 hover:bg-lime-600 duration-300 transition border-black border-2">
+                        USERS
+                    </div>
+                </a>
+                <a class="col-md-12 flex bg-white rounded-3xl p-2 px-8 hover:bg-lime-600 duration-300 transition" href="/records">
+                    SONGS
+                </a>
+            </div>
+        </div>
+    </div>
+
         <!-- If have data.error, show a alert-->
         <% if (data.error) { %>
             <div class="justify-center flex mt-10 mb-8">
@@ -36,7 +51,6 @@
             </div>
         <% } else { %>
             <div class="justify-center flex mt-4 mb-8">
-
 
                 <div class="w-4/5">
                     <!-- Separate line -->
