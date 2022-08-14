@@ -13,7 +13,7 @@ const Record = mongoose.model(
             required: true,
             default: "0",
         },
-        title: {
+        songID: {
             type: String,
             required: true,
             default: "Song",
@@ -27,17 +27,31 @@ const Record = mongoose.model(
 );
 
 module.exports = {
-    async createRecord({ id, score, title, dificulty }: { id: string, score: string, title: string, dificulty: number }) {
+    async createRecord({ id, score, songID, dificulty }: { id: string, score: string, songID: string, dificulty: number }) {
         const record = new Record({
             id,
             score,
-            title,
+            songID,
             dificulty,
         });
         return await record.save();
     },
 
-    async getRecordBySongName(songName: string) {
-        return await Record.find({ title: songName });
-    }
+    async getRecordBysongID(songID: string) {
+        return await Record.find({ songID });
+    },
+
+    async getRecordByIdandSongID(id: string, songID: string) {
+        return await Record.findOne({ id, songID }) || null;
+    },
+
+    async updateRecord(id: string, { score, songID, dificulty }: { score: string, songID: string, dificulty: number }) {
+        if(await this.getRecordByIdandSongID(id, songID)) {
+            await Record.updateOne({ id, songID }, { score, songID, dificulty });
+        } else {
+            await this.createRecord({ id, score, songID, dificulty });
+        }
+
+        return;
+    },
 }
