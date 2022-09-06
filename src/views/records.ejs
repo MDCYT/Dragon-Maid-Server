@@ -1,0 +1,95 @@
+<%- include ('partials/header.ejs') %>
+
+<body class="background-maid-dragon">
+
+    <!--Logo here-->
+    <div>
+        <div class="row mt-4">
+            <div class="col-md-12 justify-center flex">
+                <div class="logo">
+                    <img src="img/logo.png" alt="logo">
+                </div>
+            </div>
+
+            <!-- Leaderboard logo with space -->
+            <div class="col-md-12 mt-1 flex justify-center">
+                <div class="logo">
+                    <img src="img/world ranking.png" alt="logo">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="justify-center flex mt-4 mb-8 text-2xl font-black">
+        <div class="w-4/5">
+            <div class="flex justify-between mt-1 mb-1 space-x-4">
+                <a class="col-md-12 flex bg-white rounded-3xl p-2 px-8 hover:bg-lime-600 duration-300 transition" href="/">
+                    USERS
+                </a>
+                <a href="/">
+                    <div class="col-md-12 flex bg-lime-300 rounded-3xl p-2 px-8 hover:bg-lime-600 duration-300 transition border-black border-2" href="#">
+                        RECORDS
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+        <!-- If have data.error, show a alert-->
+        <% if (data.error) { %>
+            <div class="justify-center flex mt-10 mb-8">
+                <div class="bg-red-600 text-white text-center text-2xl rounded-3xl p-6">
+                    <%= data.error %><br><br>
+                    Please try later.
+                </div>
+            </div>
+
+            <div class="justify-center flex mt-10 mb-8">
+                <a href="/" class="bg-green-300 text-black text-center text-2xl rounded-full p-6 hover:bg-green-400 duration-500 font-bold">
+                        Refresh
+                </a>
+            </div>
+        <% } else { %>
+            <div class="justify-center flex mt-4 mb-8">
+
+                <div class="w-4/5">
+                    <!-- Separate line -->
+                    <div class="bg-white font-black  text-center rounded-3xl p-4">
+                        <p class="text-2xl font-black">
+                            Select the Song
+                        </p>
+
+                        <!-- I want grid with 2 columns and infinite scroll and infinite rows -->
+                        
+                        <div class="grid grid-cols-3 gap-2">
+                            <% data.forEach(song => { %>
+                                <div class="font-black  text-center rounded-3xl p-4">
+                                    <p class="text-2xl font-black">
+                                        <%= song.name %>
+                                    </p>
+                                    <div class="w-full">
+                                        <img src="<%= song.coverImage %>" alt="<%= song.name %>" class="w-4/12 mx-auto my-2 rounded-md">
+                                    </div>
+                                    <p class="font-black my-2">
+                                        By Fran
+                                    </p>
+                                    <div class="flex justify-center">
+                                        <a href="/songs/<%= song.id %>" class="bg-green-300 text-black text-center text-xl rounded-full py-1 px-4 hover:bg-green-400 duration-500 font-bold">
+                                            High Scores
+                                        </a>
+                                        </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+
+
+        <script src="js/index.js"></script>
+
+        <%- include ('partials/footer.ejs') %>
+</body>
+
+</html>

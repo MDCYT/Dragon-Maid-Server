@@ -29,5 +29,13 @@ router.get('/api/v1/user/:id', async (req, res) => {
     res.json(user)
 })
 
+router.get('/api/v1/username/:id', async (req, res) => {
+    const { id } = req.params
+
+    const user = await users.getUserById(id)
+
+    res.json(user.username)
+})
+
 
 export default router;
