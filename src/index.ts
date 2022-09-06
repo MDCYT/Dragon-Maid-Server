@@ -4,7 +4,7 @@ if (process.env.NODE_ENV !== "production") require("dotenv").config();
 import routes from "./routes/router";
 import morgan from "morgan"
 import { join } from "path";
-throw error
+
 const app = express();
 const port = process.env.PORT || 3333;
 
