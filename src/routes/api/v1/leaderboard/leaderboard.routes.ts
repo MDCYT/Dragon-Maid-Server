@@ -31,9 +31,9 @@ router.get('/api/v1/leaderboard', async (req, res) => {
         const rank = (Number(page) - 1) * Number(limit) + i + 1;
 
         // Bitfield to get flags of the user
-        // 1 - First place
-        // 2 - Second place
-        // 4 - Third place
+        // 1 - First place - 0001
+        // 2 - Second place - 0010
+        // 4 - Third place - 0100
 
         let flags = 0;
         switch (rank) {
@@ -49,7 +49,6 @@ router.get('/api/v1/leaderboard', async (req, res) => {
             default:
                 break;
         }
-
 
 
         newLeaderboard.push({

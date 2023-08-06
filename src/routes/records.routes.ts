@@ -4,7 +4,7 @@ import axios from "axios";
 
 router.get('/records', async (req, res) => {
 
-    const data = await axios.get(`${req.protocol}://${req.get('host')}/api/v1/allsongs`).then(response => {
+    let data = await axios.get(`${req.protocol}://${req.get('host')}/api/v1/allsongs`).then(response => {
         return response.data
     }).catch((e) => {
         return {
@@ -12,7 +12,7 @@ router.get('/records', async (req, res) => {
         }
     })
 
-    if (data.length === 0) return res.redirect('/');
+    if (data.length === 0) data = [];
 
     res.render('records', {
         meta: {

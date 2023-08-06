@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     if (limit > 100) limit = 100;
     if (page < 1) page = 1;
 
-    const data = await axios.get(`${req.protocol}://${req.get('host')}/api/v1/leaderboard?limit=${limit}&page=${page}`).then(response => {
+    let data = await axios.get(`${req.protocol}://${req.get('host')}/api/v1/leaderboard?limit=${limit}&page=${page}`).then(response => {
         return response.data
     }).catch((e) => {
         return {
@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
         }
     })
 
-    if (data.length === 0) return res.redirect('/');
+    if (data.length === 0) data = [];
 
 
     res.render('index', {
